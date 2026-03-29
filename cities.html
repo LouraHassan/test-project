@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      .btn-outline-primary.filter-active {
+        background-color: #0d6efd;
+        color: white;
+        border-color: #0d6efd;
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <div class="container py-5">
+      <h2 class="text-center mb-4">Travel Destinations</h2>
+
+      <!-- Buttons -->
+      <div class="text-center mb-4">
+        <button
+          class="btn btn-outline-primary me-2"
+          data-type="All"
+          onclick="filterDestinations('All', this)"
+        >
+          All
+        </button>
+        <button
+          class="btn btn-outline-primary me-2"
+          data-type="City"
+          onclick="filterDestinations('City', this)"
+        >
+          City
+        </button>
+        <button
+          class="btn btn-outline-primary me-2"
+          data-type="Beach"
+          onclick="filterDestinations('Beach', this)"
+        >
+          Beach
+        </button>
+        <button
+          class="btn btn-outline-primary me-2"
+          data-type="Mountain"
+          onclick="filterDestinations('Mountain', this)"
+        >
+          Mountain
+        </button>
+        <button
+          class="btn btn-outline-primary me-2"
+          data-type="Favorite"
+          onclick="filterDestinations('Favorite', this)"
+        >
+          Favorite ❤️
+        </button>
+      </div>
+
+      <!-- later -->
+      <button
+        class="btn btn-success ms-2"
+        onclick="openAddCityModal()"
+        title="Add new city"
+        style="
+          position: fixed;
+          bottom: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 2;
+          height: 56px;
+          font-size: 1rem;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        "
+      >
+        + Add city
+      </button>
+
+      <!-- Cards -->
+      <div id="container" class="row"></div>
+
+      <!-- later -->
+      <!-- Add City Modal -->
+      <div
+        class="modal fade"
+        id="addCityModal"
+        tabindex="-1"
+        aria-labelledby="addCityModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addCityModalLabel">Add New City</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="newCityName" class="form-label">City Name</label>
+                <input type="text" class="form-control" id="newCityName" />
+              </div>
+              <div class="mb-3">
+                <label for="newCityCountry" class="form-label">Country</label>
+                <input type="text" class="form-control" id="newCityCountry" />
+              </div>
+              <div class="mb-3">
+                <label for="newCityType" class="form-label">Type</label>
+                <select class="form-select" id="newCityType">
+                  <option value="City">City</option>
+                  <option value="Beach">Beach</option>
+                  <option value="Mountain">Mountain</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="newCityImage" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="newCityImage" />
+              </div>
+              <div class="mb-3">
+                <label for="newCityDescription" class="form-label"
+                  >Description</label
+                >
+                <textarea
+                  class="form-control"
+                  id="newCityDescription"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button type="button" class="btn btn-primary" onclick="addCity()">
+                Add City
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="cities.js"></script>
+  </body>
+</html>
